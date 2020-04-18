@@ -8,9 +8,19 @@
                 <color rgba="${0/255} ${0/255} ${0/255} 1.0"/>
             </material>	
             <geometry>
-                <box size="0.8 0.8 0.5"/>
+                <box size="1.0 1.0 1.0"/>
             </geometry>
         </visual>
+
+	<collision>
+      		<geometry>
+        		<box size="1.0 1.0 1.0"/>
+      		</geometry>
+   	 </collision>
+   	 <inertial>
+     		 <mass value="10"/>
+     		 <inertia ixx="0.8333" ixy="0.0" ixz="0.0" iyy="0.8333" iyz="0.0" izz="0.8333"/>
+    	 </inertial>
     </link>
     
     <joint name="base_link__link_01" type="revolute">
@@ -31,6 +41,16 @@
                 <cylinder radius="0.09" length="1.2"/>
             </geometry>
         </visual>
+
+	<collision>
+      		<geometry>
+        		<cylinder length="1.2" radius="0.09"/>
+      		</geometry>
+   	 </collision>
+   	 <inertial>
+     		 <mass value="10"/>
+     		 <inertia ixx="0.12202" ixy="0.0" ixz="0.0" iyy="0.12202" iyz="0.0" izz="0.00405"/>
+    	 </inertial>
     </link>
 
 <joint name="link_01__link_02" type="revolute">
@@ -51,6 +71,16 @@
                 <cylinder radius="0.09" length="1.2"/>
             </geometry>
         </visual>
+
+	<collision>
+      		<geometry>
+        		<cylinder length="1.2" radius="0.09"/>
+      		</geometry>
+   	 </collision>
+   	 <inertial>
+     		 <mass value="10"/>
+     		 <inertia ixx="0.12202" ixy="0.0" ixz="0.0" iyy="0.12202" iyz="0.0" izz="0.00405"/>
+    	 </inertial>
     </link>
 
 <joint name="link_02__link_03" type="revolute">
@@ -71,6 +101,15 @@
                 <cylinder radius="0.09" length="1.2"/>
             </geometry>
         </visual>
+ 	<collision>
+      		<geometry>
+        		<cylinder length="1.2" radius="0.09"/>
+      		</geometry>
+   	 </collision>
+   	 <inertial>
+     		 <mass value="10"/>
+     		 <inertia ixx="0.12202" ixy="0.0" ixz="0.0" iyy="0.12202" iyz="0.0" izz="0.00405"/>
+    	 </inertial>
     </link>
 
 </robot>
