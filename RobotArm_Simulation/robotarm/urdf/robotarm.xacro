@@ -1,0 +1,154 @@
+<?xml version="1.0" ?>
+ 
+<robot name="mrm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <link name="base_link">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+             <material name="black">
+                <color rgba="${0/255} ${0/255} ${0/255} 1.0"/>
+            </material>	
+            <geometry>
+                <box size="1.0 1.0 1.0"/>
+            </geometry>
+        </visual>
+
+	<collision>
+      		<geometry>
+        		<box size="1.0 1.0 1.0"/>
+      		</geometry>
+   	 </collision>
+   	 <inertial>
+     		 <mass value="100"/>
+     		 <inertia ixx="0.8333" ixy="0.0" ixz="0.0" iyy="0.8333" iyz="0.0" izz="0.8333"/>
+    	 </inertial>
+    </link>
+    
+    <joint name="base_link__link_01" type="revolute">
+        <axis xyz="0 0 1" />
+        <limit effort="1000.0" lower="-3.14" upper="3.14" velocity="0.5" />
+        <origin rpy="0 0 0" xyz="0 0 0.5"/>
+        <parent link="base_link"/>
+        <child link="link1"/>
+    </joint>
+
+    <transmission name="trans_base_link__link_01">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="base_link__link_01">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor_base_link__link_01">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+    
+    <link name="link1">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0.2"/>
+	    <material name="orange">
+                <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
+            </material>	
+            <geometry>
+                <cylinder radius="0.09" length="1.2"/>
+            </geometry>
+        </visual>
+
+	<collision>
+      		<geometry>
+        		<cylinder length="1.2" radius="0.09"/>
+      		</geometry>
+   	 </collision>
+   	 <inertial>
+     		 <mass value="10"/>
+     		 <inertia ixx="0.12202" ixy="0.0" ixz="0.0" iyy="0.12202" iyz="0.0" izz="0.00405"/>
+    	 </inertial>
+    </link>
+
+<joint name="link_01__link_02" type="revolute">
+        <axis xyz="1 0 0" />
+        <limit effort="1000.0" lower="-2.45" upper="2.45" velocity="0.5" />
+        <origin rpy="0 0 0" xyz="0 0 0.8"/>
+        <parent link="link1"/>
+        <child link="link2"/>
+    </joint>
+
+<transmission name="trans_link_01__link_02">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="link_01__link_02">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor_link_01__link_01">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+    
+    <link name="link2">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0.25"/>
+             <material name="white">
+                <color rgba="${255/255} ${255/255} ${255/255} 1.0"/>
+            </material>	
+            <geometry>
+                <cylinder radius="0.09" length="1.2"/>
+            </geometry>
+        </visual>
+
+	<collision>
+      		<geometry>
+        		<cylinder length="1.2" radius="0.09"/>
+      		</geometry>
+   	 </collision>
+   	 <inertial>
+     		 <mass value="10"/>
+     		 <inertia ixx="0.12202" ixy="0.0" ixz="0.0" iyy="0.12202" iyz="0.0" izz="0.00405"/>
+    	 </inertial>
+    </link>
+
+<joint name="link_02__link_03" type="revolute">
+        <axis xyz="1 0 0" />
+        <limit effort="1000.0" lower="-2.45" upper="2.45" velocity="0.5" />
+        <origin rpy="0 0 0" xyz="0 0 0.8"/>
+        <parent link="link2"/>
+        <child link="link3"/>
+    </joint>
+
+<transmission name="trans_link_02__link_03">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="link_02__link_03">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor_link_02__link_03">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+    
+    <link name="link3">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0.25"/>
+             <material name="orange">
+                <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
+            </material>	
+            <geometry>
+                <cylinder radius="0.09" length="1.2"/>
+            </geometry>
+        </visual>
+ 	<collision>
+      		<geometry>
+        		<cylinder length="1.2" radius="0.09"/>
+      		</geometry>
+   	 </collision>
+   	 <inertial>
+     		 <mass value="10"/>
+     		 <inertia ixx="0.12202" ixy="0.0" ixz="0.0" iyy="0.12202" iyz="0.0" izz="0.00405"/>
+    	 </inertial>
+    </link>
+
+<gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>/robotarm</robotNamespace>
+    </plugin>
+</gazebo>
+
+</robot>
