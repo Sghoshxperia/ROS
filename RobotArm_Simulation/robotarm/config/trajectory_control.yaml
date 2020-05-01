@@ -1,0 +1,14 @@
+robotarm:
+
+ joint_state_controller:
+   type: joint_state_controller/JointStateController
+   publish_rate: 50
+
+ robotarm_arm_controller:
+   type: "position_controllers/JointTrajectoryController"
+   joints:
+      - base_link__link_01
+      - link_01__link_02
+      - link_02__link_03
+     
+
