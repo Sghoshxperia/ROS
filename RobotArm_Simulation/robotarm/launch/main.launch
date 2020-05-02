@@ -13,15 +13,20 @@
         <node name="mybot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
               args="-urdf -param robot_description -model mrm -x $(arg x) -y $(arg y) -z $(arg z)" />
 
-  <rosparam file="$(find robotarm)/config/trajectory_control.yaml" command="load"/>
+       
 
-  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-    output="screen" ns="/robotarm" 
-    args="--namespace=/robotarm
-         robotarm_arm_controller
-         --timeout 60">
+        <rosparam file="$(find robotarm)/config/trajectory_control.yaml" command="load"/>
 
-  </node>
+        <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+            output="screen" ns="/robotarm" 
+            args="
+                   joint_state_controller
+                         
+                   arm_controller
+                  
+                  --timeout 60">
+
+        </node>
         
 
     </group>
